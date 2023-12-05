@@ -1,0 +1,36 @@
+<!-- templates/crud_tarefas.html -->
+
+{% extends "base.html" %}
+
+{% block title %}
+    CRUD de Tarefas
+{% endblock %}
+
+{% block content %}
+    <div class="task-container">
+        <h2>CRUD de Tarefas</h2>
+        
+        <!-- Formulário para adicionar tarefa -->
+        <form method="post" action="{{ url_for('crud_tarefas') }}">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Adicionar Tarefa</button>
+        </form>
+
+        <!-- Lista de tarefas existentes -->
+        <ul class="list-group mt-3">
+            {% for task in tasks %}
+                <li class="list-group-item">
+                    {{ task.titulo }}
+                    <a href="{{ url_for('remove_task', task_id=task.id) }}" class="btn btn-danger btn-sm float-right">Remover</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

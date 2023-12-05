@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="POST" action="{{ url_for('add_task') }}">
+        <label for="task">Nova Tarefa:</label>
+        <input type="text" id="task" name="task" required>
+        <button type="submit">Adicionar Tarefa</button>
+    </form>
+    <a href="{{ url_for('task_list') }}">Voltar para a Lista de Tarefas</a>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!-- Adicione um link para a página de adicionar tarefas -->
+<a href="{{ url_for('add_task') }}">Adicionar Tarefa</a>
+
+<ul>
+    {% for index, task in enumerate(tasks) %}
+        <li>
+            {{ task }}
+            <a href="{{ url_for('remove_task', task_id=index) }}">Remover</a>
+        </li>
+    {% endfor %}
+</ul>
